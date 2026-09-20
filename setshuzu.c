@@ -47,7 +47,7 @@ void remove(ArraySet* set, const char *element){
     }
 }
 
-ArraySet* bin(ArraySet *set1, ArraySet *set2){
+ArraySet* bing(ArraySet *set1, ArraySet *set2){
         ArraySet *result = (ArraySet *)malloc(sizeof(ArraySet));
         initSet(result);
         for(int i = 0; i < set1->size; i++){
@@ -62,18 +62,34 @@ ArraySet* bin(ArraySet *set1, ArraySet *set2){
         return result;
 }
 
-ArraySet* jia(ArraySet *set1, ArraySet *set2){
+ArraySet* jiao(ArraySet *set1, ArraySet *set2){
     ArraySet *result = (ArraySet *)malloc(sizeof(ArraySet));
     initSet(result);
    for (int i = 0; i < set1->size; i++)
    {
     addElement(result, set1->data[i]);
    }
-    for (int i = 0; i < set2->size; i++)
+    for (int i = 0; i < set1->size; i++)
     {
-     if(!contains(set1, set2->data[i])){
-          remove(result, set2->data[i]);
+     if(!contains(set2, set1->data[i])){
+          remove(result, set1->data[i]);
      }
+    }
+    return result;
+}
+
+ArraySet* cha(ArraySet *set1, ArraySet *set2){
+    ArraySet *result = (ArraySet *)malloc(sizeof(ArraySet));
+    initSet(result);
+    for (int i = 0; i < set1->size; i++)
+    {
+        addElement(result, set1->data[i]);
+    }
+    for (int i = 0; i < set1->size; i++)
+    {
+        if(contains(set2, set1->data[i])){
+            remove(result, set1->data[i]);
+        }
     }
     return result;
 }
