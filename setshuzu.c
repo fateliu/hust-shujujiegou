@@ -94,3 +94,19 @@ ArraySet* cha(ArraySet *set1, ArraySet *set2){
     return result;
 }
 
+int sizeofSet(ArraySet *set){
+    return set->size;
+}
+
+ int isziji(ArraySet *set1, ArraySet *set2){
+    for (int i = 0; i < set1->size; i++)
+    {
+        if(!contains(set2, set1->data[i])){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+
