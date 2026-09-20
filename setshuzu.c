@@ -20,3 +20,61 @@ int contains(ArraySet *set, const char *element) {
     return 0; // Element not found
 } 
 
+void clearSet(ArraySet *set) {
+    set->size = 0;
+}
+
+void addElement(ArraySet* set, const char * element){
+    if(!contains(set, element)){
+        strcpy(set->data[set->size], element);
+        set->size++;
+    }
+}
+
+void remove(ArraySet* set, const char *element){
+    int index = -1;
+    for (int i = 0; i < set->size; i++) {
+        if (strcmp(set->data[i], element) == 0) {
+            index = i;
+            break;
+        }
+    }
+    if (index != -1) {
+        for (int i = index; i < set->size - 1; i++) {
+            strcpy(set->data[i], set->data[i + 1]);
+        }
+        set->size--;
+    }
+}
+
+ArraySet* bin(ArraySet *set1, ArraySet *set2){
+        ArraySet *result = (ArraySet *)malloc(sizeof(ArraySet));
+        initSet(result);
+        for(int i = 0; i < set1->size; i++){
+            addElement(result, set1->data[i]);
+        }
+        for (int i = 0; i < set2->size; i++)
+        {
+            if(!contains(result, set2->data[i])){
+                addElement(result, set2->data[i]);
+            }
+        }
+        return result;
+}
+
+ArraySet* jia(ArraySet *set1, ArraySet *set2){
+    ArraySet *result = (ArraySet *)malloc(sizeof(ArraySet));
+    initSet(result);
+   for (int i = 0; i < set1->size; i++)
+   {
+    addElement(result, set1->data[i]);
+   }
+    for (int i = 0; i < set2->size; i++)
+    {
+     if(!contains(set1, set2->data[i])){
+          remove(result, set2->data[i]);
+     }
+    }
+    return result;
+}
+
