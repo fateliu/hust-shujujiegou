@@ -1,0 +1,23 @@
+{
+    "version":  "0.2.0",
+    "configurations":  [
+                           {
+                               "args":  [
+
+                                        ],
+                               "miDebuggerPath":  "E:/数据结构实验/.tools/w64devkit/bin/gdb.exe",
+                               "type":  "cppdbg",
+                               "cwd":  "${fileDirname}",
+                               "externalConsole":  false,
+                               "environment":  [
+
+                                               ],
+                               "name":  "C: debug active file",
+                               "MIMode":  "gdb",
+                               "stopAtEntry":  false,
+                               "preLaunchTask":  "C: build active file",
+                               "program":  "${fileDirname}/${fileBasenameNoExtension}.exe",
+                               "request":  "launch"
+                           }
+                       ]
+}
